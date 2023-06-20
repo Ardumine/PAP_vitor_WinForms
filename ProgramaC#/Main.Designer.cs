@@ -34,12 +34,13 @@
             Timer_update_Estados_mesas = new System.Windows.Forms.Timer(components);
             Box_config_mesas = new GroupBox();
             Pedidos_box = new GroupBox();
+            Entregar_pedidos_btn = new Button();
             Pronto_pedido_btn = new Button();
             Lista_pedidos = new ListBox();
             entrou_mesa_btn = new Button();
             Estado_mesa_lbl = new Label();
             Id_mesa_selec_lbl = new Label();
-            Entregar_pedidos_btn = new Button();
+            button1 = new Button();
             groupBox1.SuspendLayout();
             Box_config_mesas.SuspendLayout();
             Pedidos_box.SuspendLayout();
@@ -118,6 +119,16 @@
             Pedidos_box.TabStop = false;
             Pedidos_box.Text = "Pedidos";
             // 
+            // Entregar_pedidos_btn
+            // 
+            Entregar_pedidos_btn.Location = new Point(124, 471);
+            Entregar_pedidos_btn.Name = "Entregar_pedidos_btn";
+            Entregar_pedidos_btn.Size = new Size(112, 34);
+            Entregar_pedidos_btn.TabIndex = 2;
+            Entregar_pedidos_btn.Text = "Entregar";
+            Entregar_pedidos_btn.UseVisualStyleBackColor = true;
+            Entregar_pedidos_btn.Click += Entregar_pedidos_btn_Click;
+            // 
             // Pronto_pedido_btn
             // 
             Pronto_pedido_btn.Location = new Point(6, 471);
@@ -167,21 +178,22 @@
             Id_mesa_selec_lbl.TabIndex = 0;
             Id_mesa_selec_lbl.Text = "ID:";
             // 
-            // Entregar_pedidos_btn
+            // button1
             // 
-            Entregar_pedidos_btn.Location = new Point(124, 471);
-            Entregar_pedidos_btn.Name = "Entregar_pedidos_btn";
-            Entregar_pedidos_btn.Size = new Size(112, 34);
-            Entregar_pedidos_btn.TabIndex = 2;
-            Entregar_pedidos_btn.Text = "Entregar";
-            Entregar_pedidos_btn.UseVisualStyleBackColor = true;
-            Entregar_pedidos_btn.Click += Entregar_pedidos_btn_Click;
+            button1.Location = new Point(186, 482);
+            button1.Name = "button1";
+            button1.Size = new Size(112, 34);
+            button1.TabIndex = 3;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1127, 849);
+            Controls.Add(button1);
             Controls.Add(Box_config_mesas);
             Controls.Add(groupBox1);
             Name = "Main";
@@ -209,5 +221,6 @@
         private ListBox Lista_pedidos;
         private Button Pronto_pedido_btn;
         private Button Entregar_pedidos_btn;
+        private Button button1;
     }
 }

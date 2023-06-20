@@ -14,22 +14,30 @@ namespace Pap_Vitor_PC {
             Servidor_WS.Start();
 
         }
+        void Mesa_Recebeu_pedidos(int ID_mesa, List<Pedido> pedidos)
+        {
+            Mesas[ID_mesa].Pedidos = pedidos;
+
+            Mesas[ID_mesa].estado = Estado_mesa.A_espera_prep;
+            Update_estados_mesas();
+
+        }
         void Cliente_entrou(int ID_mesa)
         {
             Mesas[ID_mesa].estado = Estado_mesa.A_receber_pedidos;
             Com_MC.Adicionar_ir_mesa(ID_mesa, false);
             Update_estados_mesas();
 
-            Mesas[ID_mesa].Pedidos = new List<Pedido>() {
-            new Pedido(){ID_tipo_pedido = 1},
-            new Pedido(){ID_tipo_pedido = 2},
-            new Pedido(){ID_tipo_pedido = 5},
-
-
-            };
 
 
         }
+
+        void Mesa_Comida_pronta(int ID_mesa)
+        {
+            Com_MC.Adicionar_ir_mesa(ID_mesa, true);
+            Mesas[ID_mesa].estado = Estado_mesa.A_comer;
+        }
+
         void Update_pedidos()
         {
             Lista_pedidos.Items.Clear();
@@ -56,35 +64,36 @@ namespace Pap_Vitor_PC {
 
                 bool Pedidos_todos_prontos = true;
 
-                for (int i = 0; i < Mesa_selec.Pedidos.Count(); i++)
+
+                if (Mesa_selec.Ocupada)
                 {
 
-                    var pedido = Mesa_selec.Pedidos[i];
-                    string Ja_feito = (pedido.Estado == Estados_prep.Pronto) ? "|" : "";
-                    if (pedido.Estado != Estados_prep.Pronto)
+                    for (int i = 0; i < Mesa_selec.Pedidos.Count(); i++)
                     {
-                        Pedidos_todos_prontos = false;
-                    }
-                    string Nome_pedido = Ja_feito + i.ToString() + ": " + pedido.Nome_pedido;
-                    if (!Lista_pedidos.Items.Contains(Nome_pedido))
-                    {
-                        Lista_pedidos.Items.Add(Nome_pedido);
+
+                        var pedido = Mesa_selec.Pedidos[i];
+                        string Ja_feito = (pedido.Estado == Estados_prep.Pronto) ? "|" : "";
+                        if (pedido.Estado != Estados_prep.Pronto)
+                        {
+                            Pedidos_todos_prontos = false;
+                        }
+                        string Nome_pedido = Ja_feito + i.ToString() + ": " + pedido.Nome_pedido;
+                        if (!Lista_pedidos.Items.Contains(Nome_pedido))
+                        {
+                            Lista_pedidos.Items.Add(Nome_pedido);
+
+                        }
 
                     }
 
                 }
-                if (Lista_pedidos.SelectedIndex != -1 && Mesas[ID_mesa_selecionada].Pedidos[Lista_pedidos.SelectedIndex].Estado == Estados_prep.A_preparar)
-                {
-                    Pronto_pedido_btn.Enabled = true;
-                }
-                else
-                {
-                    Pronto_pedido_btn.Enabled = false;
-
-                }
 
 
-                Entregar_pedidos_btn.Enabled = Pedidos_todos_prontos;
+
+                Pronto_pedido_btn.Enabled = Lista_pedidos.SelectedIndex != -1 && Mesas[ID_mesa_selecionada].Pedidos[Lista_pedidos.SelectedIndex].Estado == Estados_prep.A_preparar;
+
+                Entregar_pedidos_btn.Enabled = Pedidos_todos_prontos && Mesa_selec.estado == Estado_mesa.A_espera_prep;
+
 
             }
             else
@@ -189,6 +198,12 @@ namespace Pap_Vitor_PC {
 
         private void Entregar_pedidos_btn_Click(object sender, EventArgs e)
         {
+            Mesa_Comida_pronta(ID_mesa_selecionada);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Mesa_Recebeu_pedidos(ID_mesa_selecionada, new List<Pedido>() { new Pedido() { ID_tipo_pedido = 1 }, new Pedido() { ID_tipo_pedido = 1 }, new Pedido() { ID_tipo_pedido = 2 } });
 
         }
     }
