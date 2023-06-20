@@ -33,11 +33,12 @@
             Mesa2_btn = new Button();
             Timer_update_Estados_mesas = new System.Windows.Forms.Timer(components);
             Box_config_mesas = new GroupBox();
+            Pedidos_box = new GroupBox();
+            Lista_pedidos = new ListBox();
             entrou_mesa_btn = new Button();
             Estado_mesa_lbl = new Label();
             Id_mesa_selec_lbl = new Label();
-            Pedidos_box = new GroupBox();
-            Lista_pedidos = new ListBox();
+            Pronto_pedido_btn = new Button();
             groupBox1.SuspendLayout();
             Box_config_mesas.SuspendLayout();
             Pedidos_box.SuspendLayout();
@@ -99,14 +100,36 @@
             Box_config_mesas.Controls.Add(Id_mesa_selec_lbl);
             Box_config_mesas.Location = new Point(636, 185);
             Box_config_mesas.Name = "Box_config_mesas";
-            Box_config_mesas.Size = new Size(479, 495);
+            Box_config_mesas.Size = new Size(479, 652);
             Box_config_mesas.TabIndex = 2;
             Box_config_mesas.TabStop = false;
             Box_config_mesas.Text = "Box_config_mesas";
             // 
+            // Pedidos_box
+            // 
+            Pedidos_box.Controls.Add(Pronto_pedido_btn);
+            Pedidos_box.Controls.Add(Lista_pedidos);
+            Pedidos_box.Location = new Point(65, 107);
+            Pedidos_box.Name = "Pedidos_box";
+            Pedidos_box.Size = new Size(408, 505);
+            Pedidos_box.TabIndex = 3;
+            Pedidos_box.TabStop = false;
+            Pedidos_box.Text = "Pedidos";
+            // 
+            // Lista_pedidos
+            // 
+            Lista_pedidos.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            Lista_pedidos.FormattingEnabled = true;
+            Lista_pedidos.ItemHeight = 38;
+            Lista_pedidos.Location = new Point(15, 39);
+            Lista_pedidos.Name = "Lista_pedidos";
+            Lista_pedidos.Size = new Size(387, 384);
+            Lista_pedidos.TabIndex = 0;
+            Lista_pedidos.DrawItem += Lista_pedidos_DrawItem;
+            // 
             // entrou_mesa_btn
             // 
-            entrou_mesa_btn.Location = new Point(6, 455);
+            entrou_mesa_btn.Location = new Point(6, 618);
             entrou_mesa_btn.Name = "entrou_mesa_btn";
             entrou_mesa_btn.Size = new Size(112, 34);
             entrou_mesa_btn.TabIndex = 2;
@@ -132,30 +155,21 @@
             Id_mesa_selec_lbl.TabIndex = 0;
             Id_mesa_selec_lbl.Text = "ID:";
             // 
-            // Pedidos_box
+            // Pronto_pedido_btn
             // 
-            Pedidos_box.Controls.Add(Lista_pedidos);
-            Pedidos_box.Location = new Point(65, 107);
-            Pedidos_box.Name = "Pedidos_box";
-            Pedidos_box.Size = new Size(408, 342);
-            Pedidos_box.TabIndex = 3;
-            Pedidos_box.TabStop = false;
-            Pedidos_box.Text = "Pedidos";
-            // 
-            // Lista_pedidos
-            // 
-            Lista_pedidos.FormattingEnabled = true;
-            Lista_pedidos.ItemHeight = 25;
-            Lista_pedidos.Location = new Point(15, 39);
-            Lista_pedidos.Name = "Lista_pedidos";
-            Lista_pedidos.Size = new Size(180, 129);
-            Lista_pedidos.TabIndex = 0;
+            Pronto_pedido_btn.Location = new Point(6, 471);
+            Pronto_pedido_btn.Name = "Pronto_pedido_btn";
+            Pronto_pedido_btn.Size = new Size(112, 34);
+            Pronto_pedido_btn.TabIndex = 1;
+            Pronto_pedido_btn.Text = "Pronto";
+            Pronto_pedido_btn.UseVisualStyleBackColor = true;
+            Pronto_pedido_btn.Click += Pronto_pedido_btn_Click;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1127, 692);
+            ClientSize = new Size(1127, 849);
             Controls.Add(Box_config_mesas);
             Controls.Add(groupBox1);
             Name = "Main";
@@ -181,5 +195,6 @@
         private Button entrou_mesa_btn;
         private GroupBox Pedidos_box;
         private ListBox Lista_pedidos;
+        private Button Pronto_pedido_btn;
     }
 }

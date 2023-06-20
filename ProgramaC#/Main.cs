@@ -1,11 +1,12 @@
 using ProgramaC_;
 using Serilog;
+using System.Windows.Forms;
 
 namespace Pap_Vitor_PC {
     public partial class Main : Form {
         Dictionary<int, Mesa> Mesas = new Dictionary<int, Mesa>() { { 1, new Mesa(1) }, { 2, new Mesa(2) }, { 3, new Mesa(3) } };
         int ID_mesa_selecionada = 0;
-
+        int ID_mesa_selec_ant = 0;
         public Main()
         {
             InitializeComponent();
@@ -29,8 +30,18 @@ namespace Pap_Vitor_PC {
 
 
         }
+        void Update_pedidos()
+        {
+            Lista_pedidos.Items.Clear();
+
+        }
         void Update_estados_mesas()
         {
+            if (ID_mesa_selec_ant != ID_mesa_selecionada)
+            {
+                Update_pedidos();
+                ID_mesa_selec_ant = ID_mesa_selecionada;
+            }
             Mesa1_btn.BackColor = (Mesas[1].Ocupada ? Color.IndianRed : Color.GreenYellow);
             Mesa2_btn.BackColor = (Mesas[2].Ocupada ? Color.IndianRed : Color.GreenYellow);
             Mesa3_btn.BackColor = (Mesas[3].Ocupada ? Color.IndianRed : Color.GreenYellow);
@@ -43,10 +54,26 @@ namespace Pap_Vitor_PC {
 
                 entrou_mesa_btn.Enabled = !Mesa_selec.Ocupada;
 
-                Lista_pedidos.Items.Clear();
+
                 for (int i = 0; i < Mesa_selec.Pedidos.Count(); i++)
                 {
                     var pedido = Mesa_selec.Pedidos[i];
+                    string Ja_feito = (pedido.Estado == Estados_prep.Pronto) ? "|" : "";
+                    string Nome_pedido = Ja_feito + i.ToString() + ": " + pedido.Nome_pedido;
+                    if (!Lista_pedidos.Items.Contains(Nome_pedido))
+                    {
+                        Lista_pedidos.Items.Add(Nome_pedido);
+
+                    }
+
+                }
+                if(Lista_pedidos.SelectedIndex != -1 && Mesas[ID_mesa_selecionada].Pedidos[Lista_pedidos.SelectedIndex].Estado == Estados_prep.A_preparar)
+                {
+                    Pronto_pedido_btn.Enabled = true;
+                }
+                else
+                {
+                    Pronto_pedido_btn.Enabled = false;
 
                 }
 
@@ -59,6 +86,7 @@ namespace Pap_Vitor_PC {
         }
         private void Main_Load(object sender, EventArgs e)
         {
+            Lista_pedidos.DrawMode = DrawMode.OwnerDrawFixed;
 
         }
 
@@ -108,5 +136,46 @@ namespace Pap_Vitor_PC {
         #endregion
 
 
+        private void Lista_pedidos_DrawItem(object sender,
+    System.Windows.Forms.DrawItemEventArgs e)
+        {
+            // Draw the background of the ListBox control for each item.
+            e.DrawBackground();
+            // Define the default color of the brush as black.
+            Brush myBrush = Brushes.IndianRed;
+
+            // Determine the color of the brush to draw each item based  
+            // on the index of the item to draw. 
+
+
+            try
+            {
+                string Texto = Lista_pedidos.Items[e.Index].ToString();
+                if (Texto.StartsWith("|"))
+                {
+                    Texto = Texto.Replace("|", "");
+                    myBrush = Brushes.GreenYellow;
+                }
+
+                // Draw the current item text based on the current Font  
+                // and the custom brush settings.
+                e.Graphics.DrawString(Texto,
+                    e.Font, myBrush, e.Bounds, StringFormat.GenericDefault);
+                // If the ListBox has focus, draw a focus rectangle around the selected item.
+                e.DrawFocusRectangle();
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        private void Pronto_pedido_btn_Click(object sender, EventArgs e)
+        {
+            Mesas[ID_mesa_selecionada].Pedidos[Lista_pedidos.SelectedIndex].Estado = Estados_prep.Pronto;
+            Update_pedidos();
+
+        }
     }
 }
