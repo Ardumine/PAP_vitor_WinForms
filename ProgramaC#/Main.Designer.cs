@@ -42,6 +42,7 @@
             Estado_mesa_lbl = new Label();
             Id_mesa_selec_lbl = new Label();
             button1 = new Button();
+            Label_Estado = new Label();
             groupBox1.SuspendLayout();
             Box_config_mesas.SuspendLayout();
             Pedidos_box.SuspendLayout();
@@ -200,11 +201,21 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click_1;
             // 
+            // Label_Estado
+            // 
+            Label_Estado.AutoSize = true;
+            Label_Estado.Location = new Point(23, 760);
+            Label_Estado.Name = "Label_Estado";
+            Label_Estado.Size = new Size(21, 25);
+            Label_Estado.TabIndex = 4;
+            Label_Estado.Text = "E";
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1127, 849);
+            Controls.Add(Label_Estado);
             Controls.Add(button1);
             Controls.Add(Box_config_mesas);
             Controls.Add(groupBox1);
@@ -216,6 +227,7 @@
             Box_config_mesas.PerformLayout();
             Pedidos_box.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -235,5 +247,6 @@
         private Button Entregar_pedidos_btn;
         private Button Saiu_mesa_btn;
         private Button button1;
+        private Label Label_Estado;
     }
 }

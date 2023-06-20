@@ -6,19 +6,35 @@ namespace Pap_Vitor_PC {
         Dictionary<int, Mesa> Mesas = new Dictionary<int, Mesa>() { { 1, new Mesa(1) }, { 2, new Mesa(2) }, { 3, new Mesa(3) } };
         int ID_mesa_selecionada = 0;
         int ID_mesa_selec_ant = 0;
+
+        public static Action<Dictionary<string, object>> evento_dados_red___;
+
+
         public Main()
         {
             InitializeComponent();
             Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
             Servidor_WS.Start();
-
+            evento_dados_red___ = Evento_dados_rec;
         }
 
-        public static void Evento_Rec(Dictionary<string, object> dados)
+        
+        void Evento_dados_rec(Dictionary<string, object> dados)
         {
+            this.Invoke((MethodInvoker)(() =>
+            {
+                if (Servidor_WS.Conectado_microbit)
+                {
+                    Label_Estado.Text = $"Localização currente: {Enum.GetName(typeof(Lugares),dados[Com_MC.nome_var_Lugar_crrt])}";
 
+                }
+                else
+                {
+                    Label_Estado.Text = "Microbit não conectado!";
+                }
+            }
+            ));
         }
-
         void Mesa_Recebeu_pedidos(int ID_mesa, List<Pedido> pedidos)
         {
             Mesas[ID_mesa].Pedidos = pedidos;
@@ -229,12 +245,11 @@ namespace Pap_Vitor_PC {
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Mesa_Recebeu_pedidos(ID_mesa_selecionada, new List<Pedido>() { 
+            Mesa_Recebeu_pedidos(ID_mesa_selecionada, new List<Pedido>() {
                 new Pedido(){ID_tipo_pedido = 1},
                 new Pedido(){ID_tipo_pedido = 3},
                 new Pedido(){ID_tipo_pedido = 5},
                 new Pedido(){ID_tipo_pedido = 4},
-
             });
         }
     }

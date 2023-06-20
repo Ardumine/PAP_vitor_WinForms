@@ -23,9 +23,10 @@ namespace Pap_Vitor_PC {
         protected override void OnMessage(MessageEventArgs e)
         {
             var dados_recebidos_raw = e.Data;
+            var dados_rec_json = JsonConvert.DeserializeObject<Dictionary<string, object>>(dados_recebidos_raw.Replace("p{", "{"));
+
             if (dados_recebidos_raw.StartsWith("p{"))
             {
-                var dados_rec_json = JsonConvert.DeserializeObject<Dictionary<string, object>>(dados_recebidos_raw.Replace("p{", "{"));
                 bool conectado = (bool)dados_rec_json["conectado"];
 
                 Servidor_WS.Conectado_microbit = conectado;
@@ -38,12 +39,13 @@ namespace Pap_Vitor_PC {
                 else
                 {
                     Serilog.Log.Information("Conectado ao mcirobit!");
-                    Send("oi");
+                    //Send("oi");
                 }
             }
             else//Recebeu do microbit
             {
                 Serilog.Log.Information(dados_recebidos_raw);
+                Main.evento_dados_red___(dados_rec_json);
                 //var dados_rec_json = JsonConvert.DeserializeObject<Dictionary<string, object>>(dados_recebidos_raw);
             }
         }
