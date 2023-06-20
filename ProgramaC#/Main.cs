@@ -14,7 +14,7 @@ namespace Pap_Vitor_PC {
 
         }
 
-        public static void Evento_rec(Tipo_evento tipo_Evento)
+        public static void Evento_Rec(Tipo_evento tipo_Evento, Dictionary<string, object> dados)
         {
 
         }
