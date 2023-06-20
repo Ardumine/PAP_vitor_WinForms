@@ -26,10 +26,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             Mesa1_btn = new Button();
             groupBox1 = new GroupBox();
-            Mesa2_btn = new Button();
             Mesa3_btn = new Button();
+            Mesa2_btn = new Button();
+            Timer_update_Estados_mesas = new System.Windows.Forms.Timer(components);
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -41,6 +43,7 @@
             Mesa1_btn.TabIndex = 0;
             Mesa1_btn.Text = "Mesa 1";
             Mesa1_btn.UseVisualStyleBackColor = true;
+            Mesa1_btn.Click += Mesa1_btn_Click;
             // 
             // groupBox1
             // 
@@ -54,6 +57,15 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Mesas";
             // 
+            // Mesa3_btn
+            // 
+            Mesa3_btn.Location = new Point(115, 115);
+            Mesa3_btn.Name = "Mesa3_btn";
+            Mesa3_btn.Size = new Size(103, 79);
+            Mesa3_btn.TabIndex = 2;
+            Mesa3_btn.Text = "Mesa 3";
+            Mesa3_btn.UseVisualStyleBackColor = true;
+            // 
             // Mesa2_btn
             // 
             Mesa2_btn.Location = new Point(115, 30);
@@ -63,14 +75,11 @@
             Mesa2_btn.Text = "Mesa 2";
             Mesa2_btn.UseVisualStyleBackColor = true;
             // 
-            // Mesa3_btn
+            // Timer_update_Estados_mesas
             // 
-            Mesa3_btn.Location = new Point(115, 115);
-            Mesa3_btn.Name = "Mesa3_btn";
-            Mesa3_btn.Size = new Size(103, 79);
-            Mesa3_btn.TabIndex = 2;
-            Mesa3_btn.Text = "Mesa 3";
-            Mesa3_btn.UseVisualStyleBackColor = true;
+            Timer_update_Estados_mesas.Enabled = true;
+            Timer_update_Estados_mesas.Interval = 500;
+            Timer_update_Estados_mesas.Tick += Timer_update_Estados_mesas_Tick;
             // 
             // Main
             // 
@@ -91,5 +100,6 @@
         private GroupBox groupBox1;
         private Button Mesa3_btn;
         private Button Mesa2_btn;
+        private System.Windows.Forms.Timer Timer_update_Estados_mesas;
     }
 }
