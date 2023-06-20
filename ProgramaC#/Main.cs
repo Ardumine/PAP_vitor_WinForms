@@ -16,7 +16,7 @@ namespace Pap_Vitor_PC {
 
         public static void Evento_Rec(Dictionary<string, object> dados)
         {
-            
+
         }
 
         void Mesa_Recebeu_pedidos(int ID_mesa, List<Pedido> pedidos)
@@ -225,6 +225,17 @@ namespace Pap_Vitor_PC {
         private void Saiu_mesa_btn_Click(object sender, EventArgs e)
         {
             Cliente_saiu(ID_mesa_selecionada);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Mesa_Recebeu_pedidos(ID_mesa_selecionada, new List<Pedido>() { 
+                new Pedido(){ID_tipo_pedido = 1},
+                new Pedido(){ID_tipo_pedido = 3},
+                new Pedido(){ID_tipo_pedido = 5},
+                new Pedido(){ID_tipo_pedido = 4},
+
+            });
         }
     }
 }

@@ -41,6 +41,7 @@
             entrou_mesa_btn = new Button();
             Estado_mesa_lbl = new Label();
             Id_mesa_selec_lbl = new Label();
+            button1 = new Button();
             groupBox1.SuspendLayout();
             Box_config_mesas.SuspendLayout();
             Pedidos_box.SuspendLayout();
@@ -189,11 +190,22 @@
             Id_mesa_selec_lbl.TabIndex = 0;
             Id_mesa_selec_lbl.Text = "ID:";
             // 
+            // button1
+            // 
+            button1.Location = new Point(365, 657);
+            button1.Name = "button1";
+            button1.Size = new Size(112, 34);
+            button1.TabIndex = 3;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1127, 849);
+            Controls.Add(button1);
             Controls.Add(Box_config_mesas);
             Controls.Add(groupBox1);
             Name = "Main";
@@ -222,5 +234,6 @@
         private Button Pronto_pedido_btn;
         private Button Entregar_pedidos_btn;
         private Button Saiu_mesa_btn;
+        private Button button1;
     }
 }
