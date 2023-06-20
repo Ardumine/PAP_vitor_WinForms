@@ -19,6 +19,15 @@ namespace Pap_Vitor_PC {
             Com_MC.Adicionar_ir_mesa(ID_mesa, false);
             Update_estados_mesas();
 
+            Mesas[ID_mesa].Pedidos = new List<Pedido>() {
+            new Pedido(){ID_tipo_pedido = 1},
+            new Pedido(){ID_tipo_pedido = 2},
+            new Pedido(){ID_tipo_pedido = 5},
+
+
+            };
+
+
         }
         void Update_estados_mesas()
         {
@@ -33,8 +42,13 @@ namespace Pap_Vitor_PC {
                 Estado_mesa_lbl.Text = "Estado: " + Mesa_selec.estado.ToString();
 
                 entrou_mesa_btn.Enabled = !Mesa_selec.Ocupada;
-                    
-                
+
+                Lista_pedidos.Items.Clear();
+                for (int i = 0; i < Mesa_selec.Pedidos.Count(); i++)
+                {
+                    var pedido = Mesa_selec.Pedidos[i];
+
+                }
 
             }
             else

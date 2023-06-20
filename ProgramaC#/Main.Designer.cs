@@ -33,11 +33,14 @@
             Mesa2_btn = new Button();
             Timer_update_Estados_mesas = new System.Windows.Forms.Timer(components);
             Box_config_mesas = new GroupBox();
+            entrou_mesa_btn = new Button();
             Estado_mesa_lbl = new Label();
             Id_mesa_selec_lbl = new Label();
-            entrou_mesa_btn = new Button();
+            Pedidos_box = new GroupBox();
+            Lista_pedidos = new ListBox();
             groupBox1.SuspendLayout();
             Box_config_mesas.SuspendLayout();
+            Pedidos_box.SuspendLayout();
             SuspendLayout();
             // 
             // Mesa1_btn
@@ -90,15 +93,26 @@
             // 
             // Box_config_mesas
             // 
+            Box_config_mesas.Controls.Add(Pedidos_box);
             Box_config_mesas.Controls.Add(entrou_mesa_btn);
             Box_config_mesas.Controls.Add(Estado_mesa_lbl);
             Box_config_mesas.Controls.Add(Id_mesa_selec_lbl);
-            Box_config_mesas.Location = new Point(646, 200);
+            Box_config_mesas.Location = new Point(636, 185);
             Box_config_mesas.Name = "Box_config_mesas";
-            Box_config_mesas.Size = new Size(288, 303);
+            Box_config_mesas.Size = new Size(479, 495);
             Box_config_mesas.TabIndex = 2;
             Box_config_mesas.TabStop = false;
             Box_config_mesas.Text = "Box_config_mesas";
+            // 
+            // entrou_mesa_btn
+            // 
+            entrou_mesa_btn.Location = new Point(6, 455);
+            entrou_mesa_btn.Name = "entrou_mesa_btn";
+            entrou_mesa_btn.Size = new Size(112, 34);
+            entrou_mesa_btn.TabIndex = 2;
+            entrou_mesa_btn.Text = "Entrou";
+            entrou_mesa_btn.UseVisualStyleBackColor = true;
+            entrou_mesa_btn.Click += entrou_mesa_btn_Click;
             // 
             // Estado_mesa_lbl
             // 
@@ -118,21 +132,30 @@
             Id_mesa_selec_lbl.TabIndex = 0;
             Id_mesa_selec_lbl.Text = "ID:";
             // 
-            // entrou_mesa_btn
+            // Pedidos_box
             // 
-            entrou_mesa_btn.Location = new Point(23, 233);
-            entrou_mesa_btn.Name = "entrou_mesa_btn";
-            entrou_mesa_btn.Size = new Size(112, 34);
-            entrou_mesa_btn.TabIndex = 2;
-            entrou_mesa_btn.Text = "Entrou";
-            entrou_mesa_btn.UseVisualStyleBackColor = true;
-            entrou_mesa_btn.Click += entrou_mesa_btn_Click;
+            Pedidos_box.Controls.Add(Lista_pedidos);
+            Pedidos_box.Location = new Point(65, 107);
+            Pedidos_box.Name = "Pedidos_box";
+            Pedidos_box.Size = new Size(408, 342);
+            Pedidos_box.TabIndex = 3;
+            Pedidos_box.TabStop = false;
+            Pedidos_box.Text = "Pedidos";
+            // 
+            // Lista_pedidos
+            // 
+            Lista_pedidos.FormattingEnabled = true;
+            Lista_pedidos.ItemHeight = 25;
+            Lista_pedidos.Location = new Point(15, 39);
+            Lista_pedidos.Name = "Lista_pedidos";
+            Lista_pedidos.Size = new Size(180, 129);
+            Lista_pedidos.TabIndex = 0;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(958, 632);
+            ClientSize = new Size(1127, 692);
             Controls.Add(Box_config_mesas);
             Controls.Add(groupBox1);
             Name = "Main";
@@ -141,6 +164,7 @@
             groupBox1.ResumeLayout(false);
             Box_config_mesas.ResumeLayout(false);
             Box_config_mesas.PerformLayout();
+            Pedidos_box.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -155,5 +179,7 @@
         private Label Id_mesa_selec_lbl;
         private Label Estado_mesa_lbl;
         private Button entrou_mesa_btn;
+        private GroupBox Pedidos_box;
+        private ListBox Lista_pedidos;
     }
 }
