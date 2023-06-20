@@ -1,4 +1,3 @@
-using ProgramaC_;
 using Serilog;
 using System.Windows.Forms;
 
@@ -14,6 +13,12 @@ namespace Pap_Vitor_PC {
             Servidor_WS.Start();
 
         }
+
+        public static void Evento_rec(Tipo_evento tipo_Evento)
+        {
+
+        }
+
         void Mesa_Recebeu_pedidos(int ID_mesa, List<Pedido> pedidos)
         {
             Mesas[ID_mesa].Pedidos = pedidos;
@@ -31,12 +36,20 @@ namespace Pap_Vitor_PC {
 
 
         }
-
         void Mesa_Comida_pronta(int ID_mesa)
         {
             Com_MC.Adicionar_ir_mesa(ID_mesa, true);
             Mesas[ID_mesa].estado = Estado_mesa.A_comer;
         }
+        void Cliente_saiu(int ID_mesa)
+        {
+            Mesas[ID_mesa].estado = Estado_mesa.Livre;
+            Mesas[ID_mesa].Pedidos = new List<Pedido>();
+            Update_pedidos();
+            Update_estados_mesas();
+
+        }
+
 
         void Update_pedidos()
         {
@@ -93,6 +106,8 @@ namespace Pap_Vitor_PC {
                 Pronto_pedido_btn.Enabled = Lista_pedidos.SelectedIndex != -1 && Mesas[ID_mesa_selecionada].Pedidos[Lista_pedidos.SelectedIndex].Estado == Estados_prep.A_preparar;
 
                 Entregar_pedidos_btn.Enabled = Pedidos_todos_prontos && Mesa_selec.estado == Estado_mesa.A_espera_prep;
+
+                Saiu_mesa_btn.Enabled = Mesa_selec.estado == Estado_mesa.A_comer;
 
 
             }
@@ -205,6 +220,11 @@ namespace Pap_Vitor_PC {
         {
             Mesa_Recebeu_pedidos(ID_mesa_selecionada, new List<Pedido>() { new Pedido() { ID_tipo_pedido = 1 }, new Pedido() { ID_tipo_pedido = 1 }, new Pedido() { ID_tipo_pedido = 2 } });
 
+        }
+
+        private void Saiu_mesa_btn_Click(object sender, EventArgs e)
+        {
+            Cliente_saiu(ID_mesa_selecionada);
         }
     }
 }

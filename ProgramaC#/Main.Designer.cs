@@ -33,6 +33,7 @@
             Mesa2_btn = new Button();
             Timer_update_Estados_mesas = new System.Windows.Forms.Timer(components);
             Box_config_mesas = new GroupBox();
+            Saiu_mesa_btn = new Button();
             Pedidos_box = new GroupBox();
             Entregar_pedidos_btn = new Button();
             Pronto_pedido_btn = new Button();
@@ -40,7 +41,6 @@
             entrou_mesa_btn = new Button();
             Estado_mesa_lbl = new Label();
             Id_mesa_selec_lbl = new Label();
-            button1 = new Button();
             groupBox1.SuspendLayout();
             Box_config_mesas.SuspendLayout();
             Pedidos_box.SuspendLayout();
@@ -96,6 +96,7 @@
             // 
             // Box_config_mesas
             // 
+            Box_config_mesas.Controls.Add(Saiu_mesa_btn);
             Box_config_mesas.Controls.Add(Pedidos_box);
             Box_config_mesas.Controls.Add(entrou_mesa_btn);
             Box_config_mesas.Controls.Add(Estado_mesa_lbl);
@@ -106,6 +107,16 @@
             Box_config_mesas.TabIndex = 2;
             Box_config_mesas.TabStop = false;
             Box_config_mesas.Text = "Box_config_mesas";
+            // 
+            // Saiu_mesa_btn
+            // 
+            Saiu_mesa_btn.Location = new Point(124, 618);
+            Saiu_mesa_btn.Name = "Saiu_mesa_btn";
+            Saiu_mesa_btn.Size = new Size(112, 34);
+            Saiu_mesa_btn.TabIndex = 4;
+            Saiu_mesa_btn.Text = "Saiu";
+            Saiu_mesa_btn.UseVisualStyleBackColor = true;
+            Saiu_mesa_btn.Click += Saiu_mesa_btn_Click;
             // 
             // Pedidos_box
             // 
@@ -178,22 +189,11 @@
             Id_mesa_selec_lbl.TabIndex = 0;
             Id_mesa_selec_lbl.Text = "ID:";
             // 
-            // button1
-            // 
-            button1.Location = new Point(186, 482);
-            button1.Name = "button1";
-            button1.Size = new Size(112, 34);
-            button1.TabIndex = 3;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1127, 849);
-            Controls.Add(button1);
             Controls.Add(Box_config_mesas);
             Controls.Add(groupBox1);
             Name = "Main";
@@ -221,6 +221,6 @@
         private ListBox Lista_pedidos;
         private Button Pronto_pedido_btn;
         private Button Entregar_pedidos_btn;
-        private Button button1;
+        private Button Saiu_mesa_btn;
     }
 }
