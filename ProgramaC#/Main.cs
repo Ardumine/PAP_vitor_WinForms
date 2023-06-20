@@ -14,9 +14,9 @@ namespace Pap_Vitor_PC {
 
         }
 
-        public static void Evento_Rec(Tipo_evento tipo_Evento, Dictionary<string, object> dados)
+        public static void Evento_Rec(Dictionary<string, object> dados)
         {
-
+            
         }
 
         void Mesa_Recebeu_pedidos(int ID_mesa, List<Pedido> pedidos)

@@ -9,7 +9,7 @@ using Serilog;
 using Newtonsoft.Json;
 
 namespace Pap_Vitor_PC {
-    public class servidor_ws_int : WebSocketBehavior {
+    class servidor_ws_int : WebSocketBehavior {
         protected override void OnOpen()
         {
             Serilog.Log.Information("WS conectado! A obter estado...");
@@ -48,16 +48,42 @@ namespace Pap_Vitor_PC {
             }
         }
     }
-    internal class Servidor_WS {
+    public class Servidor_WS {
         public static bool Conectado_microbit = false;
+        public static WebSocketServer servidor = new WebSocketServer();
+
+        #region Parte json
+        public static string Json_p_string(Dictionary<string, object> dados)
+        {
+            return JsonConvert.SerializeObject(dados);
+        }
+        public static Dictionary<string, object> Criar_json()
+        {
+            return new Dictionary<string, object>();
+        }
+        public static Dictionary<string, object> String_p_json(string dados)
+        {
+            return JsonConvert.DeserializeObject<Dictionary<string, object>>(dados);
+        }
+        #endregion
+       
+        
+        public static void Mandar_string(string dados)
+        {
+            if (!Conectado_microbit) return;
+            servidor.WebSocketServices.Broadcast(dados.Replace(" ", ""));// Tirar espacos para ser mais rapido para mandar.
+
+        }
+
+
         public static void Start()
         {
             string caminho_ws = "ws://localhost:8090";
             Log.Information($"A inicializar WS... ({caminho_ws})");
-            var wssv = new WebSocketServer(caminho_ws);
+            servidor = new WebSocketServer(caminho_ws);
 
-            wssv.AddWebSocketService<servidor_ws_int>("/ws_mc");
-            wssv.Start();
+            servidor.AddWebSocketService<servidor_ws_int>("/ws_mc");
+            servidor.Start();
 
             Log.Information("Servidor ws OK!");
         }
