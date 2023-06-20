@@ -34,11 +34,12 @@
             Timer_update_Estados_mesas = new System.Windows.Forms.Timer(components);
             Box_config_mesas = new GroupBox();
             Pedidos_box = new GroupBox();
+            Pronto_pedido_btn = new Button();
             Lista_pedidos = new ListBox();
             entrou_mesa_btn = new Button();
             Estado_mesa_lbl = new Label();
             Id_mesa_selec_lbl = new Label();
-            Pronto_pedido_btn = new Button();
+            Entregar_pedidos_btn = new Button();
             groupBox1.SuspendLayout();
             Box_config_mesas.SuspendLayout();
             Pedidos_box.SuspendLayout();
@@ -89,7 +90,7 @@
             // Timer_update_Estados_mesas
             // 
             Timer_update_Estados_mesas.Enabled = true;
-            Timer_update_Estados_mesas.Interval = 500;
+            Timer_update_Estados_mesas.Interval = 200;
             Timer_update_Estados_mesas.Tick += Timer_update_Estados_mesas_Tick;
             // 
             // Box_config_mesas
@@ -107,6 +108,7 @@
             // 
             // Pedidos_box
             // 
+            Pedidos_box.Controls.Add(Entregar_pedidos_btn);
             Pedidos_box.Controls.Add(Pronto_pedido_btn);
             Pedidos_box.Controls.Add(Lista_pedidos);
             Pedidos_box.Location = new Point(65, 107);
@@ -115,6 +117,16 @@
             Pedidos_box.TabIndex = 3;
             Pedidos_box.TabStop = false;
             Pedidos_box.Text = "Pedidos";
+            // 
+            // Pronto_pedido_btn
+            // 
+            Pronto_pedido_btn.Location = new Point(6, 471);
+            Pronto_pedido_btn.Name = "Pronto_pedido_btn";
+            Pronto_pedido_btn.Size = new Size(112, 34);
+            Pronto_pedido_btn.TabIndex = 1;
+            Pronto_pedido_btn.Text = "Pronto";
+            Pronto_pedido_btn.UseVisualStyleBackColor = true;
+            Pronto_pedido_btn.Click += Pronto_pedido_btn_Click;
             // 
             // Lista_pedidos
             // 
@@ -155,15 +167,15 @@
             Id_mesa_selec_lbl.TabIndex = 0;
             Id_mesa_selec_lbl.Text = "ID:";
             // 
-            // Pronto_pedido_btn
+            // Entregar_pedidos_btn
             // 
-            Pronto_pedido_btn.Location = new Point(6, 471);
-            Pronto_pedido_btn.Name = "Pronto_pedido_btn";
-            Pronto_pedido_btn.Size = new Size(112, 34);
-            Pronto_pedido_btn.TabIndex = 1;
-            Pronto_pedido_btn.Text = "Pronto";
-            Pronto_pedido_btn.UseVisualStyleBackColor = true;
-            Pronto_pedido_btn.Click += Pronto_pedido_btn_Click;
+            Entregar_pedidos_btn.Location = new Point(124, 471);
+            Entregar_pedidos_btn.Name = "Entregar_pedidos_btn";
+            Entregar_pedidos_btn.Size = new Size(112, 34);
+            Entregar_pedidos_btn.TabIndex = 2;
+            Entregar_pedidos_btn.Text = "Entregar";
+            Entregar_pedidos_btn.UseVisualStyleBackColor = true;
+            Entregar_pedidos_btn.Click += Entregar_pedidos_btn_Click;
             // 
             // Main
             // 
@@ -196,5 +208,6 @@
         private GroupBox Pedidos_box;
         private ListBox Lista_pedidos;
         private Button Pronto_pedido_btn;
+        private Button Entregar_pedidos_btn;
     }
 }

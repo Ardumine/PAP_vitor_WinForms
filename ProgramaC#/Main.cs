@@ -54,11 +54,17 @@ namespace Pap_Vitor_PC {
 
                 entrou_mesa_btn.Enabled = !Mesa_selec.Ocupada;
 
+                bool Pedidos_todos_prontos = true;
 
                 for (int i = 0; i < Mesa_selec.Pedidos.Count(); i++)
                 {
+
                     var pedido = Mesa_selec.Pedidos[i];
                     string Ja_feito = (pedido.Estado == Estados_prep.Pronto) ? "|" : "";
+                    if (pedido.Estado != Estados_prep.Pronto)
+                    {
+                        Pedidos_todos_prontos = false;
+                    }
                     string Nome_pedido = Ja_feito + i.ToString() + ": " + pedido.Nome_pedido;
                     if (!Lista_pedidos.Items.Contains(Nome_pedido))
                     {
@@ -67,7 +73,7 @@ namespace Pap_Vitor_PC {
                     }
 
                 }
-                if(Lista_pedidos.SelectedIndex != -1 && Mesas[ID_mesa_selecionada].Pedidos[Lista_pedidos.SelectedIndex].Estado == Estados_prep.A_preparar)
+                if (Lista_pedidos.SelectedIndex != -1 && Mesas[ID_mesa_selecionada].Pedidos[Lista_pedidos.SelectedIndex].Estado == Estados_prep.A_preparar)
                 {
                     Pronto_pedido_btn.Enabled = true;
                 }
@@ -76,6 +82,9 @@ namespace Pap_Vitor_PC {
                     Pronto_pedido_btn.Enabled = false;
 
                 }
+
+
+                Entregar_pedidos_btn.Enabled = Pedidos_todos_prontos;
 
             }
             else
@@ -171,10 +180,15 @@ namespace Pap_Vitor_PC {
 
         }
 
-        private void Pronto_pedido_btn_Click(object sender, EventArgs e)
+        private void Pronto_pedido_btn_Click(object sender, EventArgs e)//Btn click Pedido pronto
         {
             Mesas[ID_mesa_selecionada].Pedidos[Lista_pedidos.SelectedIndex].Estado = Estados_prep.Pronto;
             Update_pedidos();
+
+        }
+
+        private void Entregar_pedidos_btn_Click(object sender, EventArgs e)
+        {
 
         }
     }
