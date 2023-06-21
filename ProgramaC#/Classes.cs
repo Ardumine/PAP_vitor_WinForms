@@ -46,10 +46,27 @@ namespace Pap_Vitor_PC {
                 3,"Pescada cozida"
             },
             {
-                4,"Água"
+                4,"Francezinha"
             },
             {
-                5,"Sumo"
+                5,"Hamburger"
+            },
+
+
+            {
+                6,"Água"
+            },
+            {
+                7,"Sumo"
+            },
+            {
+                8,"Coca-cola"
+            },
+            {
+                9,"Água com gás"
+            },
+            {
+                10,"Cerveja"
             },
         };
 
