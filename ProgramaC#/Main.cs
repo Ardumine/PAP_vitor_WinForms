@@ -25,7 +25,7 @@ namespace Pap_Vitor_PC {
             {
                 if (Servidor_WS.Conectado_microbit)
                 {
-                    Label_Estado.Text = $"Localização currente: {Enum.GetName(typeof(Lugares),dados[Com_MC.nome_var_Lugar_crrt])}";
+                    Label_Estado.Text = $"Localização currente: {Enum.GetName(typeof(Lugares),dados[Com_MC.nome_var_Lugar_crrt])}; Obj: {Enum.GetName(typeof(Lugares), dados[Com_MC.nome_var_Lugar_obj])}";
 
                 }
                 else

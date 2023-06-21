@@ -44,7 +44,7 @@ namespace Pap_Vitor_PC {
             }
             else//Recebeu do microbit
             {
-                Serilog.Log.Information(dados_recebidos_raw);
+                //Serilog.Log.Information(dados_recebidos_raw);
                 Main.evento_dados_red___(dados_rec_json);
                 //var dados_rec_json = JsonConvert.DeserializeObject<Dictionary<string, object>>(dados_recebidos_raw);
             }
