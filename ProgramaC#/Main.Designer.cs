@@ -63,7 +63,7 @@
             groupBox1.Controls.Add(Mesa3_btn);
             groupBox1.Controls.Add(Mesa2_btn);
             groupBox1.Controls.Add(Mesa1_btn);
-            groupBox1.Location = new Point(332, 185);
+            groupBox1.Location = new Point(182, 185);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(228, 218);
             groupBox1.TabIndex = 1;
@@ -103,7 +103,7 @@
             Box_config_mesas.Controls.Add(entrou_mesa_btn);
             Box_config_mesas.Controls.Add(Estado_mesa_lbl);
             Box_config_mesas.Controls.Add(Id_mesa_selec_lbl);
-            Box_config_mesas.Location = new Point(636, 185);
+            Box_config_mesas.Location = new Point(472, 63);
             Box_config_mesas.Name = "Box_config_mesas";
             Box_config_mesas.Size = new Size(479, 652);
             Box_config_mesas.TabIndex = 2;
@@ -195,7 +195,7 @@
             // 
             button1.Location = new Point(144, 681);
             button1.Name = "button1";
-            button1.Size = new Size(178, 34);
+            button1.Size = new Size(281, 34);
             button1.TabIndex = 3;
             button1.Text = "Criar pedidos falsos";
             button1.UseVisualStyleBackColor = true;
@@ -214,7 +214,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1127, 849);
+            ClientSize = new Size(996, 748);
             Controls.Add(Label_Estado);
             Controls.Add(button1);
             Controls.Add(Box_config_mesas);
