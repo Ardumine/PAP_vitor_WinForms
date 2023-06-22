@@ -18,14 +18,14 @@ namespace Pap_Vitor_PC {
             evento_dados_red___ = Evento_dados_rec;
         }
 
-        
+
         void Evento_dados_rec(Dictionary<string, object> dados)
         {
             this.Invoke((MethodInvoker)(() =>
             {
                 if (Servidor_WS.Conectado_microbit)
                 {
-                    Label_Estado.Text = $"Localização currente: {Enum.GetName(typeof(Lugares),dados[Com_MC.nome_var_Lugar_crrt])}; Obj: {Enum.GetName(typeof(Lugares), dados[Com_MC.nome_var_Lugar_obj])}";
+                    Label_Estado.Text = $"Localização currente: {Enum.GetName(typeof(Lugares), dados[Com_MC.nome_var_Lugar_crrt])}; Obj: {Enum.GetName(typeof(Lugares), dados[Com_MC.nome_var_Lugar_obj])}";
 
                 }
                 else

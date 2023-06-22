@@ -193,11 +193,11 @@
             // 
             // button1
             // 
-            button1.Location = new Point(365, 657);
+            button1.Location = new Point(144, 681);
             button1.Name = "button1";
-            button1.Size = new Size(112, 34);
+            button1.Size = new Size(178, 34);
             button1.TabIndex = 3;
-            button1.Text = "button1";
+            button1.Text = "Criar pedidos falsos";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click_1;
             // 
