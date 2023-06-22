@@ -45,7 +45,7 @@ namespace Pap_Vitor_PC {
 
         public static void Adicionar_ir_mesa(int id_mesa, bool entrega)//se entrega = true ent ele vai para entrega, se n ent vai para recolha pedidos
         {
-            Log.Information($"Mesa {id_mesa} adi p ir, entrega = {entrega}");
+            Log.Information($"Mesa {id_mesa} adicionada para ir| entrega = {entrega}");
             var dados = Servidor_WS.Criar_json();
             dados[nome_var_tipo] = cmd_adi_ir_mesa;
             dados[nome_var_ID_mesa] = id_mesa;

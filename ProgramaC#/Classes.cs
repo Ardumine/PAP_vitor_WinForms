@@ -33,8 +33,10 @@ namespace Pap_Vitor_PC {
         A_preparar,
         Pronto
     }
+    
+    
     class Pedido {
-        public static Dictionary<int, string> Nomes_pedidos = new Dictionary<int, string>()
+        public static Dictionary<int, string> Nomes_pedidos = new Dictionary<int, string>() //Pedidos
         {
             {
                 1,"Frango com batata"

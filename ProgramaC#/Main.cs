@@ -19,6 +19,10 @@ namespace Pap_Vitor_PC {
         }
 
 
+
+
+
+
         void Evento_dados_rec(Dictionary<string, object> dados)
         {
             this.Invoke((MethodInvoker)(() =>
@@ -35,7 +39,9 @@ namespace Pap_Vitor_PC {
             }
             ));
         }
-        void Mesa_Recebeu_pedidos(int ID_mesa, List<Pedido> pedidos)
+       
+
+        void Evento_mesa_recebeu_pedidos(int ID_mesa, List<Pedido> pedidos)
         {
             Mesas[ID_mesa].Pedidos = pedidos;
 
@@ -65,6 +71,10 @@ namespace Pap_Vitor_PC {
             Update_estados_mesas();
 
         }
+
+
+
+
 
 
         void Update_pedidos()
@@ -186,7 +196,7 @@ namespace Pap_Vitor_PC {
 
 
         private void Lista_pedidos_DrawItem(object sender,
-    System.Windows.Forms.DrawItemEventArgs e)
+    System.Windows.Forms.DrawItemEventArgs e) //Para por cores catitas
         {
             // Draw the background of the ListBox control for each item.
             e.DrawBackground();
@@ -232,11 +242,7 @@ namespace Pap_Vitor_PC {
             Mesa_Comida_pronta(ID_mesa_selecionada);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Mesa_Recebeu_pedidos(ID_mesa_selecionada, new List<Pedido>() { new Pedido() { ID_tipo_pedido = 1 }, new Pedido() { ID_tipo_pedido = 1 }, new Pedido() { ID_tipo_pedido = 2 } });
 
-        }
 
         private void Saiu_mesa_btn_Click(object sender, EventArgs e)
         {
@@ -245,11 +251,11 @@ namespace Pap_Vitor_PC {
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Mesa_Recebeu_pedidos(ID_mesa_selecionada, new List<Pedido>() {
+            Evento_mesa_recebeu_pedidos(ID_mesa_selecionada, new List<Pedido>() {//Serve para criar pedidos aleatórios
                 new Pedido(){ID_tipo_pedido = 1},
-                new Pedido(){ID_tipo_pedido = 3},
-                new Pedido(){ID_tipo_pedido = 5},
-                new Pedido(){ID_tipo_pedido = 4},
+                new Pedido(){ID_tipo_pedido = 2},
+                new Pedido(){ID_tipo_pedido = 8},
+                new Pedido(){ID_tipo_pedido = 6},
             });
         }
     }
