@@ -190,6 +190,19 @@
             Id_mesa_selec_lbl.TabIndex = 0;
             Id_mesa_selec_lbl.Text = "ID:";
             // 
+<<<<<<< HEAD
+=======
+            // button1
+            // 
+            button1.Location = new Point(77, 379);
+            button1.Name = "button1";
+            button1.Size = new Size(281, 34);
+            button1.TabIndex = 3;
+            button1.Text = "Criar pedidos falsos";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
+            // 
+>>>>>>> 463845c2c3729c87a4106ab46da68a11a32f55f7
             // Label_Estado
             // 
             Label_Estado.AutoSize = true;

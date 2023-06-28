@@ -61,7 +61,11 @@ namespace Pap_Vitor_PC {
 
                     int id_mesa = int.Parse(dados[Com_MC.nome_var_ID_mesa].ToString());
 
+<<<<<<< HEAD
                     Evento_mesa_recebeu_pedidos(id_mesa, pedidos);
+=======
+                    Evento_mesa_recebeu_pedidos(id_mesa,pedidos);
+>>>>>>> 463845c2c3729c87a4106ab46da68a11a32f55f7
                 }
 
 
