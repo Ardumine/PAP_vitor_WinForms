@@ -9,7 +9,7 @@ using Serilog;
 using Newtonsoft.Json;
 
 namespace Pap_Vitor_PC {
-    class servidor_ws_int : WebSocketBehavior {//
+    class servidor_ws_int : WebSocketBehavior {
         protected override void OnOpen()
         {
             Serilog.Log.Information("WS conectado! A obter estado...");
