@@ -63,7 +63,7 @@
             groupBox1.Controls.Add(Mesa3_btn);
             groupBox1.Controls.Add(Mesa2_btn);
             groupBox1.Controls.Add(Mesa1_btn);
-            groupBox1.Location = new Point(182, 185);
+            groupBox1.Location = new Point(57, 102);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(228, 218);
             groupBox1.TabIndex = 1;
@@ -103,7 +103,7 @@
             Box_config_mesas.Controls.Add(entrou_mesa_btn);
             Box_config_mesas.Controls.Add(Estado_mesa_lbl);
             Box_config_mesas.Controls.Add(Id_mesa_selec_lbl);
-            Box_config_mesas.Location = new Point(472, 63);
+            Box_config_mesas.Location = new Point(444, 43);
             Box_config_mesas.Name = "Box_config_mesas";
             Box_config_mesas.Size = new Size(479, 652);
             Box_config_mesas.TabIndex = 2;
@@ -112,9 +112,9 @@
             // 
             // Saiu_mesa_btn
             // 
-            Saiu_mesa_btn.Location = new Point(124, 618);
+            Saiu_mesa_btn.Location = new Point(157, 616);
             Saiu_mesa_btn.Name = "Saiu_mesa_btn";
-            Saiu_mesa_btn.Size = new Size(112, 34);
+            Saiu_mesa_btn.Size = new Size(144, 34);
             Saiu_mesa_btn.TabIndex = 4;
             Saiu_mesa_btn.Text = "Saiu";
             Saiu_mesa_btn.UseVisualStyleBackColor = true;
@@ -134,9 +134,9 @@
             // 
             // Entregar_pedidos_btn
             // 
-            Entregar_pedidos_btn.Location = new Point(124, 471);
+            Entregar_pedidos_btn.Location = new Point(142, 465);
             Entregar_pedidos_btn.Name = "Entregar_pedidos_btn";
-            Entregar_pedidos_btn.Size = new Size(112, 34);
+            Entregar_pedidos_btn.Size = new Size(131, 34);
             Entregar_pedidos_btn.TabIndex = 2;
             Entregar_pedidos_btn.Text = "Entregar";
             Entregar_pedidos_btn.UseVisualStyleBackColor = true;
@@ -144,9 +144,9 @@
             // 
             // Pronto_pedido_btn
             // 
-            Pronto_pedido_btn.Location = new Point(6, 471);
+            Pronto_pedido_btn.Location = new Point(6, 465);
             Pronto_pedido_btn.Name = "Pronto_pedido_btn";
-            Pronto_pedido_btn.Size = new Size(112, 34);
+            Pronto_pedido_btn.Size = new Size(130, 34);
             Pronto_pedido_btn.TabIndex = 1;
             Pronto_pedido_btn.Text = "Pronto";
             Pronto_pedido_btn.UseVisualStyleBackColor = true;
@@ -165,9 +165,9 @@
             // 
             // entrou_mesa_btn
             // 
-            entrou_mesa_btn.Location = new Point(6, 618);
+            entrou_mesa_btn.Location = new Point(6, 616);
             entrou_mesa_btn.Name = "entrou_mesa_btn";
-            entrou_mesa_btn.Size = new Size(112, 34);
+            entrou_mesa_btn.Size = new Size(145, 34);
             entrou_mesa_btn.TabIndex = 2;
             entrou_mesa_btn.Text = "Entrou";
             entrou_mesa_btn.UseVisualStyleBackColor = true;
@@ -193,7 +193,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(144, 681);
+            button1.Location = new Point(77, 379);
             button1.Name = "button1";
             button1.Size = new Size(281, 34);
             button1.TabIndex = 3;
@@ -204,7 +204,7 @@
             // Label_Estado
             // 
             Label_Estado.AutoSize = true;
-            Label_Estado.Location = new Point(23, 760);
+            Label_Estado.Location = new Point(12, 641);
             Label_Estado.Name = "Label_Estado";
             Label_Estado.Size = new Size(21, 25);
             Label_Estado.TabIndex = 4;
@@ -214,7 +214,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(996, 748);
+            ClientSize = new Size(996, 716);
             Controls.Add(Label_Estado);
             Controls.Add(button1);
             Controls.Add(Box_config_mesas);
