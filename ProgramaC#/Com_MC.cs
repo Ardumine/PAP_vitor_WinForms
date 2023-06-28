@@ -43,6 +43,8 @@ namespace Pap_Vitor_PC {
         public static string nome_var_tipo_ir_mesa = "tim";
         public static string nome_var_ID_mesa = "idm";
 
+
+        public static string nome_var_pedidos = "ped";
         public static void Adicionar_ir_mesa(int id_mesa, bool entrega)//se entrega = true ent ele vai para entrega, se n ent vai para recolha pedidos
         {
             Log.Information($"Mesa {id_mesa} adicionada para ir| entrega = {entrega}");

@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using Serilog;
 using System.Windows.Forms;
 
@@ -27,19 +28,47 @@ namespace Pap_Vitor_PC {
         {
             this.Invoke((MethodInvoker)(() =>
             {
-                if (Servidor_WS.Conectado_microbit)
+                //Console.WriteLine(dados[Com_MC.nome_var_tipo].ToString());
+                string Tipo_dado_Rec = dados[Com_MC.nome_var_tipo].ToString();
+                if (Tipo_dado_Rec.StartsWith(Com_MC.cmd_obter_stats))
                 {
-                    Label_Estado.Text = $"Localização currente: {Enum.GetName(typeof(Lugares), dados[Com_MC.nome_var_Lugar_crrt])}; Obj: {Enum.GetName(typeof(Lugares), dados[Com_MC.nome_var_Lugar_obj])}";
+                    if (Servidor_WS.Conectado_microbit)
+                    {
+                        Label_Estado.Text = $"Localização currente: {Enum.GetName(typeof(Lugares), dados[Com_MC.nome_var_Lugar_crrt])}; Obj: {Enum.GetName(typeof(Lugares), dados[Com_MC.nome_var_Lugar_obj])}";
 
+                    }
+                    else
+                    {
+                        Label_Estado.Text = "Microbit não conectado!";
+                    }
                 }
-                else
+                if (Tipo_dado_Rec.StartsWith(Com_MC.cmd_rec_Pedidos))
                 {
-                    Label_Estado.Text = "Microbit não conectado!";
+                    //Console.WriteLine("PEDIDOS RECS");
+                    var pedidos = new List<Pedido>();
+
+                    var ids_pedidos = (Newtonsoft.Json.Linq.JArray)dados[Com_MC.nome_var_pedidos];
+
+                    foreach (var id_pedido in ids_pedidos.ToList())
+                    {
+                        int id_ped_trans = int.Parse(id_pedido.ToString());
+
+                        if (id_ped_trans != 0)
+                        {
+                            pedidos.Add(new Pedido() { ID_tipo_pedido = id_ped_trans });
+                        }
+                    }
+
+                    int id_mesa = int.Parse(dados[Com_MC.nome_var_ID_mesa].ToString());
+
+                    Evento_mesa_recebeu_pedidos(id_mesa, pedidos);
                 }
+
+
             }
             ));
         }
-       
+
 
         void Evento_mesa_recebeu_pedidos(int ID_mesa, List<Pedido> pedidos)
         {
@@ -66,7 +95,7 @@ namespace Pap_Vitor_PC {
         void Cliente_saiu(int ID_mesa)
         {
             Mesas[ID_mesa].estado = Estado_mesa.Livre;
-            Mesas[ID_mesa].Pedidos = new List<Pedido>();
+            Mesas[ID_mesa].Pedidos = new List<Pedido>(); //Pedidos limpos
             Update_pedidos();
             Update_estados_mesas();
 
@@ -251,12 +280,15 @@ namespace Pap_Vitor_PC {
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Evento_mesa_recebeu_pedidos(ID_mesa_selecionada, new List<Pedido>() {//Serve para criar pedidos aleatórios
-                new Pedido(){ID_tipo_pedido = 1},
-                new Pedido(){ID_tipo_pedido = 2},
-                new Pedido(){ID_tipo_pedido = 8},
-                new Pedido(){ID_tipo_pedido = 6},
-            });
+            // Evento_mesa_recebeu_pedidos(ID_mesa_selecionada, new List<Pedido>() {//Serve para criar pedidos aleatórios
+            //     new Pedido(){ID_tipo_pedido = 1},
+            //     new Pedido(){ID_tipo_pedido = 2},
+            //     new Pedido(){ID_tipo_pedido = 8},
+            //     new Pedido(){ID_tipo_pedido = 6},
+            // });
+
+            var dados_rec_json = JsonConvert.DeserializeObject<Dictionary<string, object>>("{\"t\":\"rp\",\"idm\":1,\"ped\":[2,6,5]}");
+            Evento_dados_rec(dados_rec_json);
         }
     }
 }
